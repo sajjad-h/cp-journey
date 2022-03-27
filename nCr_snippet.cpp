@@ -13,8 +13,8 @@ void init(int n)
         fac[i] = (fac[i - 1] * i) % mod;
     }
     inv[1] = 1;
-    for(int i = 2; i <=n; ++i) {
-        inv[i] = mod - (mod/i) * inv[mod % i] % mod;
+    for(int i = 2; i <= n; ++i) {
+        inv[i] = mod - (mod / i) * inv[mod % i] % mod;
     }
     fac_inv[1] = 1;
     for (int i = 2; i <= n; i++) {
