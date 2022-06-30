@@ -8,7 +8,17 @@ using namespace std;
 #include<ext/pb_ds/assoc_container.hpp>
 using namespace __gnu_pbds;
 
-template<typename temp>using ordered_set = tree<temp, null_type, less_equal<temp>, rb_tree_tag,tree_order_statistics_node_update>;
+template<typename temp>using ordered_multiset = tree<temp, null_type, less_equal<temp>, rb_tree_tag,tree_order_statistics_node_update>;
+//order_of_key(k)  : Number of items strictly smaller than k .
+//find_by_order(k) : K-th element in a set (counting from zero).//*(ost.find_by_order(k))
+
+void multiSetErase(ordered_multiset<int> &t, int v) {
+    int rank = t.order_of_key(v); //Number of elements that are less than v in t
+    ordered_multiset<int>::iterator it = t.find_by_order(rank); //Iterator that points to the (rank+1)th element in t
+    t.erase(it);
+}
+
+template<typename temp>using ordered_set = tree<temp, null_type, less<temp>, rb_tree_tag,tree_order_statistics_node_update>;
 //order_of_key(k)  : Number of items strictly smaller than k .
 //find_by_order(k) : K-th element in a set (counting from zero).//*(ost.find_by_order(k))
 

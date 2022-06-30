@@ -25,7 +25,7 @@ void makeUnion(int a, int b)
 {
 	int par_a = findParent(a);
 	int par_b = findParent(b);
-	if (par_a > par_b) swap(par_a, par_b);
+	if (sz[par_a] < sz[par_b]) swap(par_a, par_b);
 	if (par_a != par_b) {
 		par[par_b] = par_a;
 		sz[par_a] += sz[par_b];
