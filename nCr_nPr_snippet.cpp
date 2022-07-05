@@ -22,10 +22,19 @@ void init(int n)
     }
 }
 
-ll ncr(ll n, ll r)
+ll nCr(ll n, ll r)
 {
-    if (n == r) return 1;
     if (n < r) return 0;
+    if (n == r || r == 0) return 1;
     ll res = ((fac[n] * fac_inv[r]) % mod * fac_inv[n - r]) % mod;
+    return res;
+}
+
+ll nPr(ll n, ll r)
+{
+    if (n < r) return 0;
+    if (r == 0) return 1;
+    if (n == r) return fac[n];
+    ll res = (fac[n] * fac_inv[n - r]) % mod;
     return res;
 }
