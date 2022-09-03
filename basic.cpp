@@ -44,3 +44,26 @@ Binary of -5:11111011
 
 
 ~0 = 111111111111...111
+
+    // Convert integer to String
+    // to find its length
+    stringstream convert;
+    convert << number;
+    string s = convert.str();
+    int len = s.length();
+
+
+    // Converting both integers to strings
+    string a = to_string(l);
+    string b = to_string(r);
+
+
+ll to_integer(string sa)
+{
+    ll res = 0;
+    for (auto ch : sa) {
+        res = res * 10 + (ch - '0');
+    }
+    return res;
+}
+
