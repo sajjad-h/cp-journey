@@ -7,18 +7,14 @@ using namespace std;
 
 ll maxSubarray(vector<ll> v)
 {
-    ll maxSoFar = LLONG_MIN;
-    ll maxEndingHere = 0;
-    for (int i = 0; i < v.size(); i++) {
-        maxEndingHere = maxEndingHere + v[i];
-        if (maxSoFar < maxEndingHere) {
-            maxSoFar = maxEndingHere;
-        }
-        if (maxEndingHere < 0) {
-            maxEndingHere = 0;
-        }
+    ll ans = LLONG_MIN;
+    ll pre = 0;
+    for (auto x : v) {
+        pre = pre + x;
+        ans = max(ans, pre);
+        if (pre < 0) pre = 0;
     }
-    return maxSoFar;
+    return ans;
 }
 
 void testcase()

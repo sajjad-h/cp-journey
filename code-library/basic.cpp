@@ -45,19 +45,15 @@ Binary of -5:11111011
 
 ~0 = 111111111111...111
 
-    // Convert integer to String
-    // to find its length
-    stringstream convert;
-    convert << number;
-    string s = convert.str();
-    int len = s.length();
+// Convert integer to String
+stringstream convert;
+convert << number;
+string s = convert.str();
 
+// Convert integer to string
+string a = to_string(l);
 
-    // Converting both integers to strings
-    string a = to_string(l);
-    string b = to_string(r);
-
-
+// Convert string to integer
 ll to_integer(string sa)
 {
     ll res = 0;
@@ -66,4 +62,34 @@ ll to_integer(string sa)
     }
     return res;
 }
+
+
+/**
+
+# searching a pair in a set 
+
+Suppose we have a range (1, 8).
+We want to split it at 3 such that (1, 3) and (4, 8).
+
+**/
+int x, n; cin >> x >> n;
+vector<int> a(n);
+for (auto &x : a) cin >> x;
+set< pair<int, int> > st;
+st.insert({1, x});
+map<int, int> mp;
+mp[x]++;
+for (auto x : a) {
+    auto it = st.lower_bound({x, INT_MAX}); it--;
+    auto [u, v] = *it;
+    mp[v - u + 1]--;
+    if (mp[v - u + 1] == 0) mp.erase(v - u + 1);
+    st.erase({u, v});
+    st.insert({u, x});
+    st.insert({x + 1, v});
+    mp[x - u + 1]++;
+    mp[v - x]++;
+    cout << (*mp.rbegin()).first << " ";
+}
+cout << "\n";
 
