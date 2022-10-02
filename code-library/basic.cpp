@@ -93,3 +93,13 @@ for (auto x : a) {
 }
 cout << "\n";
 
+
+
+// set declaration with custom compare function
+auto cmp = [](pair<int, char> a, pair<int, char> b) {
+    if (a.first == b.first) {
+        return a.second > b.second;
+    }
+    return a.first > b.first;
+};
+set< pair<int, char>, decltype(cmp)> st(cmp);
