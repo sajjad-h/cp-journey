@@ -22,7 +22,7 @@ void segBuild(int node, int s, int e)
     tree[node] = tree[left] + tree[right];
 }
 
-void segUpdate(int node, int s, int e, int l, int r, int val)
+void segUpdate(int node, int s, int e, int l, int r, ll val)
 {
     int mid = (s + e) / 2;
     int left = 2 * node;

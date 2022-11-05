@@ -35,12 +35,12 @@ sort(vec.begin(), vec.end(), [](int a, int b) {
 int n = 5, m = -5;
 bitset<8> b(n);
 bitset<8> b1(m);
-cout << "Binary of 5:" << b << endl; // 
-cout << "Binary of -5:" << b1 << endl;
+cout << "Binary of +5: " << b << endl; // 
+cout << "Binary of -5: " << b1 << endl;
 
 Output:
-Binary of 5:00000101
-Binary of -5:11111011
+Binary of +5: 00000101
+Binary of -5: 11111011
 
 
 ~0 = 111111111111...111

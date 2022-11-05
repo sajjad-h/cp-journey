@@ -8,6 +8,7 @@ const int N = 1000005;
 int pi[N];
 string s;
 
+// shanto vai's book
 void prefixFunction()
 {
     int now = -1;
@@ -19,6 +20,23 @@ void prefixFunction()
         }
         if (s[now + 1] == s[i]) pi[i] = ++now;
         else                    pi[i] = now = -1;
+    }
+}
+
+// cp-algorithms
+void prefix_function(string s)
+{
+    int n = (int) s.size();
+    pi[0] = 0;
+    for (int i = 1; i < n; i++) {
+        int j = pi[i - 1];
+        while (j > 0 && s[i] != s[j]) {
+            j = pi[j - 1];
+        }
+        if (s[i] == s[j]) {
+            j++;
+        }
+        pi[i] = j;
     }
 }
 
