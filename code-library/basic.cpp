@@ -122,3 +122,11 @@ vector<int> find(int arr[], int n , int x )
     if (arr[k] != x) return { -1, -1 };
     return { k, k1 - 1 };
 }
+
+// rotating a vector 3 times (right-rotation)
+vector<int> vec = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+rotate(vec.begin(), vec.begin() + 3, vec.end());
+
+Original vector: 1 2 3 4 5 6 7 8 9 
+Rotated vector : 4 5 6 7 8 9 1 2 3 
