@@ -4,6 +4,6 @@ My LeetCode Profile: [sajjad_h](https://leetcode.com/sajjad_h/ "https://leetcode
 
 | Category | Solved |
 | ----------- | ----------- |
-| Hard | 5 |
-| Medium | 15 |
-| Easy | 7 |
+| Hard | 18 |
+| Medium | 26 |
+| Easy | 12 |
