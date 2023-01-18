@@ -1,43 +1,49 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int CeilIndex(vector<int>& v, int l, int r, int key)
+#define   ll    long long int
+
+const int inf = 2e8;
+
+int lisNlogK(vector<int>& seq, vector<int>& ans)
 {
-	while (r - l > 1) {
-		int m = l + (r - l) / 2;
-		if (v[m] >= key)
-			r = m;
-		else
-			l = m;
-	}
-	return r;
-}
-
-int LongestIncreasingSubsequenceLength(vector<int>& v)
-{
-	if (v.size() == 0)
-		return 0;
-	vector<int> tail(v.size(), 0);
-	int length = 1;
-
-	tail[0] = v[0];
-	for (int i = 1; i < v.size(); i++) {
-
-		if (v[i] < tail[0])                             // new smallest value
-			tail[0] = v[i];
-		else if (v[i] > tail[length - 1])               // v[i] extends largest subsequence
-			tail[length++] = v[i];
-        else                                            // v[i] will become end candidate of an existing subsequence
-			tail[CeilIndex(tail, -1, length - 1, v[i])] = v[i];
-	}
-
-	return length;
+    int n = seq.size();
+    vector<int> tail;
+    int curLength = 0;
+    for (int i = 0; i < n; i++) {
+        int k = lower_bound(tail.begin(), tail.end(), seq[i]) - tail.begin();
+        if (k == tail.size()) {
+            tail.push_back(seq[i]);
+            curLength++;
+        }
+        else {
+            tail[k] = min(tail[k], seq[i]);
+        }
+        ans[i] = k + 1;
+    }
+    return curLength;
 }
 
 int main()
 {
-	vector<int> v{ 2, 5, 3, 7, 11, 8, 10, 13, 6 };
-	cout << "Length of Longest Increasing Subsequence is "
-			<< LongestIncreasingSubsequenceLength(v) << '\n';
-	return 0;
+    vector<int> seq{8, 1, 9, 8, 3, 4, 6, 1, 5, 2};
+    vector<int> ans(seq.size());
+    cout << lisNlogK(seq, ans) << "\n";
+    for (auto x : seq) {
+        cout << x << " ";
+    }
+    cout << "\n";
+    for (auto x : ans) {
+        cout << x << " ";
+    }
+    cout << "\n";
+    return 0;
 }
+
+/**
+
+4
+8 1 9 8 3 4 6 1 5 2
+1 1 2 2 2 3 4 1 4 2
+
+**/
